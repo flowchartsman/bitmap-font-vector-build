@@ -39,6 +39,6 @@ RUN apk update && \
 ADD https://github.com/kreativekorp/bitsnpicas/raw/master/downloads/BitsNPicas.jar /fonttools/
 ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher/fontpatcher /fonttools/
 ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher/PowerlineSymbols.sfd /fonttools/
-WORKDIR /fonttools
-COPY --from=build /build/mkbold-mkitalic-0.11/mkbold /build/mkbold-mkitalic-0.11/mkitalic /build/mkbold-mkitalic-0.11/mkbolditalic ./
-COPY --from=build /build/woff2/woff2_compress ./
+COPY --from=build /build/mkbold-mkitalic-0.11/mkbold /build/mkbold-mkitalic-0.11/mkitalic /build/mkbold-mkitalic-0.11/mkbolditalic /fonttools
+COPY --from=build /build/woff2/woff2_compress /fonttools
+ENV PATH="$PATH:/fonttools"
