@@ -27,8 +27,8 @@ RUN apk update && \
     apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     ca-certificates \
     openjdk8-jre \
-    go \
     fontforge \
+    imagemagick \
     potrace \
     font-util \
     bdftopcf \
