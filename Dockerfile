@@ -1,6 +1,5 @@
 FROM alpine:3 AS build
-RUN apk update && \
-    apk add --no-cache \
+RUN apk add --update --no-cache \
     ca-certificates \
     g++ \
     make \
@@ -23,8 +22,8 @@ RUN cd /build && \
 
 FROM alpine:3
 MAINTAINER Andy Walker <andy@andy.dev>
-RUN apk update && \
-    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+
+RUN apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     ca-certificates \
     openjdk8-jre \
     fontforge \
@@ -32,9 +31,16 @@ RUN apk update && \
     potrace \
     font-util \
     bdftopcf \
+    zip \
     py-pip \
     make && \
     pip install --no-cache-dir bdflib
+
+# Install MS fonts for common usage and so Imagemagick doesn't crap itself
+RUN apk add --update --no-cache --virtual .ms-fonts msttcorefonts-installer && \
+    update-ms-fonts 2>/dev/null && \
+    fc-cache -f && \
+    apk del .ms-fonts
 
 ADD https://github.com/kreativekorp/bitsnpicas/raw/master/downloads/BitsNPicas.jar /fonttools/
 ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher/fontpatcher /fonttools/
