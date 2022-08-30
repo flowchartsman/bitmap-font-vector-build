@@ -25,6 +25,7 @@ MAINTAINER Andy Walker <andy@andy.dev>
 
 RUN apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     ca-certificates \
+    git \
     openjdk8-jre \
     fontforge \
     imagemagick \
@@ -48,3 +49,4 @@ ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher
 COPY --from=build /build/mkbold-mkitalic-0.11/mkbold /build/mkbold-mkitalic-0.11/mkitalic /build/mkbold-mkitalic-0.11/mkbolditalic /fonttools
 COPY --from=build /build/woff2/woff2_compress /fonttools
 ENV PATH="$PATH:/fonttools"
+WORKDIR /build
