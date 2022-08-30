@@ -25,6 +25,7 @@ MAINTAINER Andy Walker <andy@andy.dev>
 
 RUN apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     ca-certificates \
+    bash \
     git \
     openjdk8-jre \
     fontforge \
