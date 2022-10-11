@@ -44,7 +44,7 @@ RUN apk add --update --no-cache --virtual .ms-fonts msttcorefonts-installer && \
     fc-cache -f && \
     apk del .ms-fonts
 
-ADD https://github.com/kreativekorp/bitsnpicas/raw/master/downloads/BitsNPicas.jar /fonttools/
+ADD https://github.com/kreativekorp/bitsnpicas/releases/download/v2.0/BitsNPicas.jar /fonttools/
 ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher/fontpatcher /fonttools/
 ADD https://raw.githubusercontent.com/Lokaltog/vim-powerline/develop/fontpatcher/PowerlineSymbols.sfd /fonttools/
 COPY --from=build /build/mkbold-mkitalic-0.11/mkbold /build/mkbold-mkitalic-0.11/mkitalic /build/mkbold-mkitalic-0.11/mkbolditalic /fonttools

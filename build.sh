@@ -1,5 +1,5 @@
 #!/bin/sh
-if docker buildx ls | grep -qv 'multiplatform'; then
+if ! docker buildx ls | grep -q '^multiplatform'; then
     docker buildx create --name multiplatform
 fi
 docker buildx use multiplatform
